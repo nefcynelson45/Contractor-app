@@ -224,8 +224,12 @@
         <td><span class="badge bg-primary">{{$w->status}}</span></td>
         <td>Upcoming</td>
         <td>Upcoming</td>        
-        <td><a href="/work/{{$w->w_id}}/edit" class="btn btn-app-sm bg-warning">
+        
+        <td>
+        @if(optional($w->booking)->b_date < Carbon\Carbon::today())
+        <a href="/work/{{$w->w_id}}/edit" class="btn btn-app-sm bg-warning">
                   <i class="fas fa-edit"></i> Edit</a></td>
+        @endif
         <td><a href="/work/{{$w->w_id}}/delete" class="btn btn-app-sm bg-danger" onclick="return confirm('Do You Really want to Delete?');">
                   <i class="fas fa-trash"></i> Delete</a></td>
 

@@ -186,14 +186,14 @@
         @foreach($booking as $book)
         <tr class="card-body">
             <td>{{$book->id}}</td>
-            <td>{{$getname}}</td>
+            <td>{{optional($book->customer)->cust_name}}</td>
             <td>{{$book->b_name}}</td>
             <td>{{$book->email}}</td>
             <td>{{$book->b_phone}}</td>
             <td>{{$book->b_date}}</td>
             <td>{{$book->l_id}}</td>
             <td>{{$book->m_id}}</td>
-            <td>{{$getcons}}</td>
+            <td>{{optional($book->construction)->cons_type}}</td>
             <form action="/fb/{{$book->id}}" method="post">
             @csrf
             <td>

@@ -246,8 +246,8 @@
                   <thead class="table-success">
                   <tr>
                           <th>ID</th>
-                          <th>LABOR</th>
-                          <th>AMOUNT</th>
+                          <th>Labor</th>
+                          <th>Amount</th>
                   </tr>
                   </thead>
                   <tbody>

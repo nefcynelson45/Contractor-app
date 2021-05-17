@@ -25,7 +25,7 @@
       <div class="col-12">
         <h2 class="page-header">
           <img src="/dist/img/AdminLTELogo.jpg" alt=""> Davidson's General Contractors.
-          <small class="float-right">Date: <?php echo (new DateTime('tomorrow'))->format('d-m-Y');?> </script></small>
+          <small class="float-right">Date: <?php echo (new DateTime('today'))->format('d-m-Y');?> </script></small>
         </h2>
       </div>
       <!-- /.col -->

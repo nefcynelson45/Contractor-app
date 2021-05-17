@@ -18,9 +18,6 @@ class BookingController extends Controller
      */
     public function index()
     {
-        
-       // $custm=DB::select('select * from registration_models r,booking_models b where r.cust_id=b.cust_id');  
-            //return view('viewallbookings',compact('booking','const',''));
         $bookings=BookingModel::with('customer','construction')->orderBy('id','desc')->get();
         return view('viewallbookings',compact('bookings'));
 
@@ -28,25 +25,15 @@ class BookingController extends Controller
     }
     public function indexcust()
     {
-        
         $data=['LoggedUserInfo'=>RegistrationModel::where('cust_id','=',session('LoggedUser'))->first()];
-        $booking=BookingModel::where('cust_id','=',session('LoggedUser'))->get();
-        foreach ($booking as $book) {
-            $getconst=$book->cons_id;}
-        $const=ConstructionModel::where('cons_id','=',$getconst)->get();
-        foreach ($const as $cons) {
-            $getcons=$cons->cons_type;}
-        $name=RegistrationModel::where('cust_id','=',session('LoggedUser'))->get();
-        foreach ($name as $n) {
-            $getname=$n->cust_name;}
-        return view('viewbooking',$data,compact('booking','getcons','getname'));
+        $booking=BookingModel::where('cust_id','=',session('LoggedUser'))->with('customer','construction')->get();
+        return view('viewbooking',$data,compact('booking'));
 
     }
     public function viewwork()
     {
         $work = workModel::with('booking','customer')->get();
         //$booking=BookingModel::with('customer',$work->booking->id)->get(); 
-          
         return view('work',compact('work'));
     }      
                 
@@ -77,7 +64,13 @@ class BookingController extends Controller
 
     public function store(Request $request)
     {
-        
+        $validated = $request->validate([
+            'bname' => 'required|min:2|max:255',
+            'email' => 'required|email',
+            'phone' => 'required|max:12',
+            'cons'  => 'required'
+        ]);
+
         $getbname=request('bname');
         $getemail=request('email');
         $getbphone=request('phone');
@@ -103,8 +96,9 @@ class BookingController extends Controller
 
         $booking->save();
 
+        $data=['LoggedUserInfo'=>RegistrationModel::where('cust_id','=',session('LoggedUser'))->first()];
         $cons=ConstructionModel::select('cons_id','cons_type')->get();
-        return view('booking',compact('cons'))->with('Success !');
+        return view('booking',$data,compact('cons'))->with('success,Successfully Added!');
         
     }
 
@@ -115,7 +109,10 @@ class BookingController extends Controller
     }
     public function workupdate(Request $request, $id)
     {
+        $validated = $request->validate([
+            'cdate' => 'required|'
 
+        ]);
         $work=WorkModel::find($id);
         if ($request->hasFile('wimg')) 
         {
@@ -211,10 +208,8 @@ class BookingController extends Controller
             $book->save();
             $work->save();
 
-            $bookings=BookingModel::all();
-            $const=ConstructionModel::all();
-
-            return view('viewallbookings',compact('bookings','const'));
+            $bookings=BookingModel::with('customer','construction')->orderBy('id','desc')->get();
+            return view('viewallbookings',compact('bookings'));
        
     }
     public function reject(Request $request,$id)
@@ -224,10 +219,8 @@ class BookingController extends Controller
             $book->status='Rejected';
             $book->save();
             
-            $bookings=BookingModel::all();
-            $const=ConstructionModel::all();
-
-            return view('viewallbookings',compact('bookings','const'));
+            $bookings=BookingModel::with('customer','construction')->orderBy('id','desc')->get();
+            return view('viewallbookings',compact('bookings'));
    
     }
 }

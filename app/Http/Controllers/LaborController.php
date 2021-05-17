@@ -36,7 +36,7 @@ class LaborController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'type' => 'required|min:2|max:255',
+            'type' => 'required|min:2|max:255|unique:labor_models,l_type',
             'rate' => 'required|min:3'
         ]);
 
@@ -95,7 +95,7 @@ class LaborController extends Controller
         $labor=LaborModel::find($id);
 
         $validated = $request->validate([
-            'type' => 'required|min:2|max:255',
+            'type' => 'required|min:2|max:255|unique:labor_models,l_type',
             'rate' => 'required|min:3'
         ]);
 
