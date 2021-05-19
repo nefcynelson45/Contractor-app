@@ -95,7 +95,7 @@ class LaborController extends Controller
         $labor=LaborModel::find($id);
 
         $validated = $request->validate([
-            'type' => 'required|min:2|max:255|unique:labor_models,l_type',
+            'type' => 'required|min:2|max:255',
             'rate' => 'required|min:3'
         ]);
 
@@ -103,8 +103,9 @@ class LaborController extends Controller
         $rate=request('rate');
 
         $labor->l_type=$gettype;
-        $labor->amount=$rate;
+        $labor->Amount=$rate;
 
+        
         $labor->save();
         echo "<script>alert('Labor Updated Successfully !!');window.location='/addlabor';</script>";
     }

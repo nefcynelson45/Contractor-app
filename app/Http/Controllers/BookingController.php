@@ -136,8 +136,7 @@ class BookingController extends Controller
 
         $photo->move(public_path('assets/works/img'),$name);
    
-        $book=BookingModel::find($bookid);
-        $book->status="Work Finished";
+        
         $work->id=$bookid;
         $work->status=$status;
         $work->photo=$name;

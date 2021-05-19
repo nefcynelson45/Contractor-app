@@ -94,7 +94,6 @@ class MaterialController extends Controller
         $mat=MaterialModel::find($id);
 
         $validated = $request->validate([
-            'matname' => 'required|min:2|max:255|unique:material_models,mat_name',
             'rate' => 'required|min:3'
         ]);
 

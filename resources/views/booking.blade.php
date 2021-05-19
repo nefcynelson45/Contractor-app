@@ -182,7 +182,7 @@
                     <label class="lead" ><strong> Email :</strong></label>
                     <input type="text" class="form-control" name="email" placeholder="Email" required>
                     <label class="lead" ><strong> Appointment Date :</strong></label>
-                    <input type="date" class="form-control"  min="<?php echo (new DateTime('tomorrow'))->format('Y-m-d');?>" max="31-12-2025" name="bdate" required>
+                    <input type="date" class="form-control"  min="<?php echo (new DateTime('tomorrow'))->format('Y-m-d');?>" max="2022-12-31" name="bdate" required>
                 </div>
               </div>
                     <br>

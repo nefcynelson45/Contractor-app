@@ -221,7 +221,7 @@
                   <div class="form-group">
                   <label>Completion Date:</label>
                     <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                        <input type="date" class="form-control datetimepicker-input  date_date_set" name="cdate" data-target="#reservationdate" required/>
+                        <input type="date" class="form-control datetimepicker-input  date_date_set" name="cdate"  max="<?php echo (new DateTime('today'))->format('Y-m-d');?>" data-target="#reservationdate" required/>
 
 
                     </div>

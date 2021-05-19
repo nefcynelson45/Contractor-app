@@ -38,7 +38,7 @@ class ConstructionController extends Controller
     {
 
         $validated = $request->validate([
-            'cons' => 'required|min:2|max:255|unique:construction_models,cons_type'
+            'cons' => 'required|min:2|max:255'
         ]);
 
         $cons=request('cons');
