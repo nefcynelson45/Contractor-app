@@ -27,7 +27,7 @@ class RegistrationController extends Controller
      */
     public function create()
     {
-        return view('registration');
+        return view('auth.register');
     }
 
     /**
@@ -36,7 +36,7 @@ class RegistrationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    /*public function store(Request $request)
     {
         $request->validate([
             'cust_name'=>'required|min:2',
@@ -73,14 +73,14 @@ class RegistrationController extends Controller
             $customer->save();
             $login->save();
     
-            echo "<script>alert('Registered Successfully !');window.location='/login';</script>";
+            echo "<script>alert('Registered Successfully !');window.location='auth.login';</script>";
         }
         else{
-            echo "<script>alert('Password Mismatch');window.location='/reg';</script>";
+            echo "<script>alert('Password Mismatch');window.location='auth.register';</script>";
         }
 
 
-    }
+    }*/
 
     /**
      * Display the specified resource.

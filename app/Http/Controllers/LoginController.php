@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\LoginModel;
+use App\Models\RegistrationModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
@@ -20,18 +21,16 @@ class LoginController extends Controller
     {
        // return view('index');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('login');
-    }
     
 
+    public function create()
+    {
+            return view('auth.login');
+    }
+    public function create1()
+    {
+        return view('auth.register');
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -42,11 +41,11 @@ class LoginController extends Controller
     function login(Request $request)
     {
         $request->validate([
-            'uname'=>'required|email',
+            'username'=>'required|email',
             'password'=>'required|min:5|max:12',
         ]);
-        $getemail=request('uname');
-        $getpwd=request('password');
+        //$getemail=request('username');
+        //$getpwd=request('password');
         $us=$request->input('user');
         $user=intval($us);
 
@@ -55,51 +54,95 @@ class LoginController extends Controller
         if($user==1){
 
 
-               $userInfo=LoginModel::where('uname','=',$request->uname)->first();
+               $userInfo=LoginModel::where('uname','=',$request->username)->first();
                if(!$userInfo){
-                echo "<script>alert('Invalid Email !! Try Again!!!');window.location='/login';</script>";
+                echo "<script>alert('Invalid Email !! Try Again!!!');window.location='/auth/login';</script>";
                }  
                else{
-                   if($request->password==$userInfo->password){
+                   if(Hash::check($request->password,$userInfo->password)){
                         if($userInfo->u_type=="admin"){
                             $request->session()->put('LoggedUser',$userInfo->login_id);
                             return redirect('/admin');
                         }
                         else{
-                            echo "<script>alert('Invalid Contractor !! Try Again!!!');window.location='/login';</script>";
+                            echo "<script>alert('Invalid Contractor !! Try Again!!!');window.location='/auth/login';</script>";
                         }
                     }
                    else{
-                    echo "<script>alert('Invalid Password !! Try Again!!!');window.location='/login';</script>";
+                    echo "<script>alert('Invalid Password !! Try Again!!!');window.location='/auth/login';</script>";
                    }
                }                      
         }
         else if($user==2)
         {
-                 $userInfo=LoginModel::where('uname','=',$request->uname)->first();
+                 $userInfo=LoginModel::where('uname','=',$request->username)->first();
                     if(!$userInfo){
-                        echo "<script>alert('Invalid Email !! Try Again!!!');window.location='/login';</script>";
+                        echo "<script>alert('Invalid Email !! Try Again!!!');window.location='/auth/login';</script>";
                     }  
                     else{
-                     if($request->password==$userInfo->password){
+                     if(Hash::check($request->password,$userInfo->password)){
                          if($userInfo->u_type=="customer"){
                             $request->session()->put('LoggedUser',$userInfo->login_id);
                             return redirect('/cust');
                          }
                          else{
-                            echo "<script>alert('Invalid Customer !! Try Again!!!');window.location='/login';</script>";
+                            echo "<script>alert('Invalid Customer !! Try Again!!!');window.location='/auth/login';</script>";
                          }
                      }
                      else{
-                      echo "<script>alert('Invalid Password !! Try Again!!!');window.location='/login';</script>";
+                      echo "<script>alert('Invalid Password !! Try Again!!!');window.location='/auth/login';</script>";
                      }
                  }         
         }
         else{  
-        echo "<script>alert('Select a Usertype !!');window.location='/login';</script>";
+        echo "<script>alert('Select a Usertype !!');window.location='/auth/login';</script>";
         }
 }
+public function reg(Request $request)
+    {
+        $request->validate([
+            'cust_name'=>'required|min:2',
+            'phone'=>'required|unique:registration_models,phone',
+            'cust_email'=>'required|unique:registration_models,email',
+            'password'=>'required|min:5|max:12',
+            'address'=>'required|min:7'
+        ]);
 
+        
+        $getname=request('cust_name');
+        $email=request('cust_email');
+        $getphone=request('phone');
+        $getocc=request('occupation');
+        $getaddr=request('address');
+        $getdob=request('dob');
+        $getpwd=request('password');
+        $getcpwd=request('cpwd');
+
+        if($getpwd==$getcpwd){
+
+            $customer=new RegistrationModel();
+            $login=new LoginModel();
+            $customer->cust_name=$getname;
+            $customer->email=$email;
+            $customer->phone=$getphone;
+            $customer->occupation=$getocc;
+            $customer->address=$getaddr;
+            $customer->dob=$getdob;
+    
+            $login->uname=$email;
+            $login->password=Hash::make($getpwd);
+    
+            $customer->save();
+            $login->save();
+    
+            echo "<script>alert('Registered Successfully !');window.location='/auth/login';</script>";
+        }
+        else{
+            echo "<script>alert('Password Mismatch');window.location='/auth/reg';</script>";
+        }
+
+
+    }
 
     /**
      * Display the specified resource.
@@ -112,17 +155,11 @@ class LoginController extends Controller
         //
     }
 
-    public function logout(Request $request ) {
-        
-        header("cache-Control: no-store, no-cache, must-revalidate");
-        header("cache-Control: post-check=0, pre-check=0", false);
-        header("Pragma: no-cache");
-        header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
+    function logout( ) {
+
         if(session()->has('LoggedUser')){
             session()->pull('LoggedUser');
-            Session::flush();
-            $request->session()->regenerate();
-            return Redirect('/login');
+            return Redirect('/auth/login');
         }
     }
     /**

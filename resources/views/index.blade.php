@@ -24,7 +24,7 @@
       </nav><!-- .navbar -->
 
       <a href="#about" class="get-started-btn scrollto">Get Started</a>
-      <a href="/login" class="get-started-btn scrollto">Login</a>
+      <a href="{{ route('auth.login') }}" class="get-started-btn scrollto">Login</a>
 
 
     </div>
@@ -249,7 +249,7 @@
         <div class="text-center">
           <h3>Book Your Appointment</h3>
           <p> Interested in partnering with Davidson's General Contractors on your next project? <br>Register and Login to book your Appointments.</p>
-          <a class="cta-btn" href="/reg">Register</a>
+          <a class="cta-btn" href="{{route('auth.register')}}">Register</a>
         </div>
 
       </div>
