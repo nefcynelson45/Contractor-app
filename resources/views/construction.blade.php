@@ -42,7 +42,7 @@
           <i class="fas fa-search"></i>
         </a>
         <div class="navbar-search-block">
-          <form class="form-inline">
+          <form class="form-inline">@c
             <div class="input-group input-group-sm">
               <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
               <div class="input-group-append">
@@ -56,8 +56,8 @@
             </div>
           </form>
         </div>
-        <a href="{{route('logout')}}">
-        <button class="btn btn-dark btn-sm" type="logout">
+        <a href="{{route('auth.logout')}}">
+        <button class="btn btn-dark btn-sm" type="logout" onclick="return confirm('Do You Really want to Logout?');">
                   logout
                 </button></a>
       

@@ -31,10 +31,14 @@ Route::get('/', function () {
 
     //Auth::routes();
     Route::auth();
+    Route::post('auth/loginread',[LoginController::class,'login'])->name('auth.log');
+    Route::post('auth/customerread',[LoginController::class,'reg'])->name('auth.regist');  
+    Route::get('auth/logout',[LoginController::class,'logout'])->name('auth.logout'); 
 
-    Route::middleware(['AuthCheck'])->group(function () { 
+    Route::get('/profile/{id}/edit', [CustomerController::class,'profile']); 
+    Route::post('/profileeditprocess/{id}',[CustomerController::class,'profileupdate']);
 
-
+    
     Route::get('/auth/login',[LoginController::class,'create'])->name('auth.login');
     Route::get('/auth/reg', [LoginController::class,'create1'])->name('auth.register');
 
@@ -73,10 +77,8 @@ Route::get('/', function () {
     
     Route::get('/breport',[BookingController::class,'print']);
     Route::get('/creport',[CustomerController::class,'print']);
-});
 
-Route::middleware(['CustCheck'])->group(function () { 
-
+    //customer
     Route::get('/auth/login',[LoginController::class,'create'])->name('auth.login');
     Route::get('/auth/reg', [LoginController::class,'create1'])->name('auth.register');
 
@@ -93,9 +95,15 @@ Route::middleware(['CustCheck'])->group(function () {
 
     Route::get('/viewbooking',[BookingController::class,'indexcust']);
     Route::get('/viewfb',[FeedbackController::class,'indexcust']);
+
+    Route::middleware(['AuthCheck'])->group(function () { 
+
+
+});
+
+Route::middleware(['CustCheck'])->group(function () { 
+
+
     
 });
 
-Route::post('auth/loginread',[LoginController::class,'login'])->name('auth.log');
-Route::post('auth/customerread',[LoginController::class,'reg'])->name('auth.regist');  
-Route::get('auth/logout',[LoginController::class,'logout'])->name('auth.logout'); 

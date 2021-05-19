@@ -111,6 +111,7 @@ margin-left: 4px;
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <head>
 
 <link rel="icon" href="/dist/img/AdminLTELogo.jpg" type="image/x-icon">
@@ -171,7 +172,8 @@ margin-left: 4px;
 			</div>
 	<div class="card-body text-white">
       <form action="{{route('auth.log')}}" method="post">
-      {{ csrf_field() }}
+      @csrf
+
       @if(Session::get('success'))
           <div class="alert alert-success">
             {{Session::get('success')}}

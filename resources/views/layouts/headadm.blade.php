@@ -8,7 +8,6 @@
 
   <link rel="icon" href="/dist/img/AdminLTELogo.jpg" type="image/x-icon">
 
-
   <!-- SweetAlert2 -->
   <link rel="stylesheet" href="/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
   <!-- Toastr -->
@@ -45,9 +44,9 @@
 <!-- Bootstrap -->
 <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- SweetAlert2 -->
-<script src="../../plugins/sweetalert2/sweetalert2.min.js"></script>
+<script src="/plugins/sweetalert2/sweetalert2.min.js"></script>
 <!-- Toastr -->
-<script src="../../plugins/toastr/toastr.min.js"></script>
+<script src="/plugins/toastr/toastr.min.js"></script>
 <!-- AdminLTE -->
 <script src="/dist/js/adminlte.js"></script>
 

@@ -63,8 +63,8 @@
             </div>
           </form>
         </div>
-        <a href="{{route('logout')}}">
-        <button class="btn btn-dark btn-sm" type="logout">
+        <a href="{{route('auth.logout')}}">
+        <button class="btn btn-dark btn-sm" type="logout" onclick="return confirm('Do You Really want to Logout?');">
                   logout
                 </button></a>
       

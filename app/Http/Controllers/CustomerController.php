@@ -6,6 +6,8 @@ use App\Models\RegistrationModel;
 use App\Models\MaterialModel;
 use App\Models\LaborModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Hash;
 
 class CustomerController extends Controller
 {
@@ -41,6 +43,56 @@ class CustomerController extends Controller
         $labor=LaborModel::all();
         $data=['LoggedUserInfo'=>RegistrationModel::where('cust_id','=',session('LoggedUser'))->first()];
         return view('cust',$data,compact('mat','labor'));
+    }
+
+    function profile(Request $request,$id)
+    {
+        $cust=RegistrationModel::find($id);
+        $data=['LoggedUserInfo'=>RegistrationModel::where('cust_id','=',session('LoggedUser'))->first()];
+        return view('profile',$data,compact('cust'));
+
+    }
+
+    public function profileupdate(Request $request, $id)
+    {
+        $cust=RegistrationModel::find($id);
+        $login=LoginModel::find($id);
+        $request->validate([
+            'cust_name'=>'required|min:2',
+            'phone'=>'required|min:10|unique:registration_models,phone',
+            'password'=>'required|min:5|max:12',
+            'address'=>'required|min:7'
+        ]);
+        $getname=request('cust_name');
+        $email=request('cust_email');
+        $getphone=request('phone');
+        $getocc=request('occupation');
+        $getaddr=request('address');
+        $getdob=request('dob');
+        $getpwd=request('password');
+        $getcpwd=request('cpwd');
+
+        if($getpwd==$getcpwd){
+            $cust->cust_name=$getname;
+            $cust->email=$email;
+            $cust->phone=$getphone;
+            $cust->occupation=$getocc;
+            $cust->address=$getaddr;
+            $cust->dob=$getdob;
+
+            $login->uname=$email;
+            $login->password=Hash::make($getpwd);
+    
+            $cust->save();
+            $login->save();
+
+            echo "<script>alert('Profile Updated Successfully !!');</script>";
+            $mat=MaterialModel::all();
+            $labor=LaborModel::all();
+            $data=['LoggedUserInfo'=>RegistrationModel::where('cust_id','=',session('LoggedUser'))->first()];
+            return view('cust',$data,compact('mat','labor'));
+        }
+
     }
 
     /**

@@ -67,7 +67,7 @@ class BookingController extends Controller
         $validated = $request->validate([
             'bname' => 'required|min:2|max:255',
             'email' => 'required|email',
-            'phone' => 'required|max:12',
+            'phone' => 'required|min:10|max:12',
             'cons'  => 'required'
         ]);
 
@@ -98,7 +98,8 @@ class BookingController extends Controller
 
         $data=['LoggedUserInfo'=>RegistrationModel::where('cust_id','=',session('LoggedUser'))->first()];
         $cons=ConstructionModel::select('cons_id','cons_type')->get();
-        return view('booking',$data,compact('cons'))->with('success,Successfully Added!');
+        $booking=BookingModel::where('cust_id','=',session('LoggedUser'))->with('customer','construction')->get();
+        return view('/viewbooking',$data,compact('cons','booking'))->with('success,Successfully Added!');
         
     }
 
@@ -126,6 +127,8 @@ class BookingController extends Controller
             ->get();
             foreach($bid as $b)
             {$bookid=$b->id;}
+            
+            
         $status=request('stat');
         $photo=$request->file('wimg');
         $cdate=request('cdate');
@@ -133,6 +136,8 @@ class BookingController extends Controller
 
         $photo->move(public_path('assets/works/img'),$name);
    
+        $book=BookingModel::find($bookid);
+        $book->status="Work Finished";
         $work->id=$bookid;
         $work->status=$status;
         $work->photo=$name;

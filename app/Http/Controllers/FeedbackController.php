@@ -94,8 +94,9 @@ class FeedbackController extends Controller
      */
     public function edit($id)
     {
+        $data=['LoggedUserInfo'=>RegistrationModel::where('cust_id','=',session('LoggedUser'))->first()];
         $fb=FeedbackModel::find($id);
-        return view('editfb',compact('fb'));
+        return view('editfb',$data,compact('fb'));
     }
 
     /**

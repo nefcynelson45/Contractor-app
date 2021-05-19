@@ -9,6 +9,15 @@
   * sidebar-collapse
   * sidebar-mini
 -->
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
 <div class="wrapper">
   <!-- Navbar -->
@@ -69,7 +78,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="/profile/{{$LoggedUserInfo['cust_id']}}/edit" class="d-block">{{$LoggedUserInfo['cust_name']}}</a>
@@ -101,8 +110,8 @@
               </p>
             </a>
           </li>
-          <li class="nav-item  menu-open">
-            <a href="/booking" class="nav-link active">
+          <li class="nav-item">
+            <a href="/booking" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Appointment
@@ -146,12 +155,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Add Appointment</h1>
+            <h1 class="m-0">My Profile</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/cust">Home</a></li>
-              <li class="breadcrumb-item active">Appointments</li>
+              <li class="breadcrumb-item active">Profile</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -169,54 +178,56 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-<form action="/bookread" method="post">
-{{csrf_field()}}
-                    <label class="lead" ><strong> Name Of Client :</strong></label>
-                    <input type="text" class="form-control" style="max-width:100%;" name="bname" placeholder="Name" required>
-                    <label class="lead" ><strong> Contact No. :</strong></label>
-                    <input type="number" class="form-control"name="phone"  placeholder="Phone No." required>
+                <form action="/profileeditprocess/{{$cust->cust_id}}" method="post">
+                {{csrf_field()}}
+                <label class="lead" ><strong> Name  :</strong></label>
+                <input type="text"  id="name" style="max-width:100%;" name="cust_name" class="app-form-control form-control @error('name') is-invalid @enderror"  placeholder="Name" value="{{$cust->cust_name}}" required autocomplete="name" autofocus>
+                 @error('name')
+                    <span class="invalid-feedback" role="alert">
+                         <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+                <label class="lead" ><strong> Email :</strong></label>
+                <input type="email" id="email" name="cust_email" class="app-form-control @error('email') is-invalid @enderror form-control" style="max-width:100%;"  placeholder="Email"  value="{{$cust->email}}" required autocomplete="email">
+            @error('email')
+                <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+                </span>
+            @enderror
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                    <label class="lead" ><strong> Email :</strong></label>
-                    <input type="text" class="form-control" name="email" placeholder="Email" required>
-                    <label class="lead" ><strong> Appointment Date :</strong></label>
-                    <input type="date" class="form-control"  min="<?php echo (new DateTime('tomorrow'))->format('Y-m-d');?>" max="31-12-2025" name="bdate" required>
-                </div>
-              </div>
-                    <br>
-                    <h2>Services/ Construction Description</h2>
-            </div><br> <i><span class="badge" style="color:red;">*</span>Check Our Labor & Materials <a href="/cust#lm">Here !</a></i>
-              <div class="col-md-6">
-                <div class="form-group">
-                <br><label class="lead" ><strong> Labor Service</strong></label>
-                    <input type="checkbox"  id="btncheck1" name="lab" value="yes" autocomplete="off" >
+                <label class="lead" ><strong> Phone :</strong></label>
+                <input type="number" id="phone" name="phone" class="app-form-control @error('Phone') is-invalid @enderror form-control" style="max-width:100%;"  placeholder="Phone No." value="{{$cust->phone}}" required autocomplete="phone">
+                <label class="lead" ><strong> Occupation :</strong></label>
+                <input type="text"  name="occupation" class="app-form-control form-control" style="max-width:100%;"  placeholder="occupation" value="{{$cust->occupation}}" required>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                    <label class="lead" ><strong> Materials</strong></label>
-                    <input type="checkbox" name="mat" value="yes" id="btncheck1" autocomplete="off" >
+                <label class="lead" ><strong> Address :</strong></label>
+                <textarea name="address" class="app-form-control form-control" style="max-width:100%;"  id="" cols="10" rows="10" placeholder="Address" value="" required >{{$cust->address}}</textarea>
+                <label class="lead" ><strong> Date Of Birth :</strong></label>
+                <input type="date"  name="dob" class="app-form-control @error('Phone') is-invalid @enderror form-control" style="max-width:100%;" placeholder="dob" value="{{$cust->dob}}" required>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                    <div class="dropdown">
-                      <label class="lead" >Construction type : </label>
-                        <select class="form-control dropdown-toggle" name="cons" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" required>
-                        Select
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                        @foreach($cons as $con)
-                          <option value="{{$con->cons_id}}" >{{$con->cons_type}}</option>
-                        @endforeach
-                        </ul>
-                        </select>
-                    </div>
-                  </div>
-                </div><br>
-<center><button class="btn btn-primary">Confirm Booking</button></center>
-</form>
+                <label class="lead" ><strong> Password :</strong></label>
+                <input id="password" type="password" name="password" class="app-form-control @error('password') is-invalid @enderror form-control" style="max-width:100%;" placeholder="Password" required autocomplete="new-password">
+            @error('password')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+                <label class="lead" ><strong> Confirm Password :</strong></label>
+                <input id="password-confirm" type="password" class="app-form-control form-control" style="max-width:100%;" name="cpwd" placeholder="Confirm Password" required autocomplete="new-password">
+                </div>
+              </div>
+              </div>
+              <center><button class="btn btn-primary">Update Profile</button></center>
+                </form>
 
 
   </div>

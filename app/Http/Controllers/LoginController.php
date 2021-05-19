@@ -102,7 +102,7 @@ public function reg(Request $request)
     {
         $request->validate([
             'cust_name'=>'required|min:2',
-            'phone'=>'required|unique:registration_models,phone',
+            'phone'=>'required|unique:registration_models,phone|min:10',
             'cust_email'=>'required|unique:registration_models,email',
             'password'=>'required|min:5|max:12',
             'address'=>'required|min:7'
@@ -159,7 +159,7 @@ public function reg(Request $request)
 
         if(session()->has('LoggedUser')){
             session()->pull('LoggedUser');
-            return Redirect('/auth/login');
+            echo "<script>alert('Logged Out Successfully !');window.location='/auth/login';</script>";
         }
     }
     /**

@@ -45,8 +45,8 @@
             </div>
           </form>
         </div>
-        <a href="{{route('logout')}}">
-        <button class="btn btn-dark btn-sm" type="logout">
+        <a href="{{route('auth.logout')}}">
+        <button class="btn btn-dark btn-sm" type="logout" onclick="return confirm('Do You Really want to Logout?');">
                   logout
                 </button></a>
 
@@ -72,7 +72,7 @@
           <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="/cust" class="d-block">{{$LoggedUserInfo['cust_name']}}</a>
+          <a href="/profile/{{$LoggedUserInfo['cust_id']}}/edit" class="d-block">{{$LoggedUserInfo['cust_name']}}</a>
         </div>
       </div>
 
@@ -179,6 +179,7 @@
             <th>LABOR</th>
             <th>MATERIAL</th>
             <th>CONSTRUCTION TYPE</th>
+            <th>STATUS</th>
             <th></th>
         </tr>
         </thead>
@@ -194,6 +195,8 @@
             <td>{{$book->l_id}}</td>
             <td>{{$book->m_id}}</td>
             <td>{{optional($book->construction)->cons_type}}</td>
+            <td>{{$book->status}}</td>
+
             <form action="/fb/{{$book->id}}" method="post">
             @csrf
             <td>

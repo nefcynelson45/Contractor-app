@@ -318,7 +318,7 @@ body, button, input {
         </div>
         <div class="screen-body-item">
           <form action="{{route('auth.regist')}}" method="post">
-          {{csrf_field()}}
+          @csrf
 
           @if(Session::get('success'))
           <div class="alert alert-success">
