@@ -29,6 +29,12 @@ class FeedbackController extends Controller
         return view('viewallfeedback',compact('feedback'));
     }
 
+    public function search(Request $request)
+    {
+        $getsearch=request('search');
+        $feedback=FeedbackModel::query()->where('feedback','LIKE',"%{$getsearch}%")->get();
+        return view('viewallfeedback',compact('feedback'));
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -101,7 +101,7 @@ class LoginController extends Controller
 public function reg(Request $request)
     {
         $request->validate([
-            'cust_name'=>'required|min:2',
+            'cust_name'=>'required|min:2|regex:/^[a-z A-Z]+$/',
             'phone'=>'required|unique:registration_models,phone|min:10',
             'cust_email'=>'required|unique:registration_models,email',
             'password'=>'required|min:5|max:12',

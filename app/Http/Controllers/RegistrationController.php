@@ -20,6 +20,13 @@ class RegistrationController extends Controller
         return view('viewallcustomers',compact('customers'));
     }
 
+    public function search(Request $request)
+    {
+        $getsearch=request('search');
+        $customers=RegistrationModel::query()->where('cust_name','LIKE',"%{$getsearch}%")
+                                                ->where('cust_id','!=',1)->get();
+        return view('viewallcustomers',compact('customers'));
+    }
     /**
      * Show the form for creating a new resource.
      *

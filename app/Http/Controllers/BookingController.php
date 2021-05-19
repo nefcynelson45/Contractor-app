@@ -23,6 +23,13 @@ class BookingController extends Controller
 
   
     }
+    public function bsearch(Request $request)
+    {
+        $getsearch=request('search');
+        $bookings=BookingModel::query()->where('b_name','LIKE',"%{$getsearch}%")->with('customer','construction')->orderBy('id','desc')->get();
+        return view('viewallbookings',compact('bookings'));
+    }
+
     public function indexcust()
     {
         $data=['LoggedUserInfo'=>RegistrationModel::where('cust_id','=',session('LoggedUser'))->first()];
@@ -37,7 +44,12 @@ class BookingController extends Controller
         return view('work',compact('work'));
     }      
                 
-
+    public function search(Request $request)
+    {
+        $getsearch=request('search');
+        $work=WorkModel::query()->where('Completion','LIKE',"%{$getsearch}%")->with('booking','customer')->get();
+        return view('work',compact('work'));
+    }
 
 
     /**
@@ -65,7 +77,7 @@ class BookingController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'bname' => 'required|min:2|max:255',
+            'bname' => 'required|min:2|max:255|regex:/^[a-z A-Z]+$/',
             'email' => 'required|email',
             'phone' => 'required|min:10|max:12',
             'cons'  => 'required'

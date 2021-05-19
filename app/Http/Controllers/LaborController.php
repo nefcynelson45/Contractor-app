@@ -61,9 +61,11 @@ class LaborController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function search(Request $request)
     {
-        //
+        $getsearch=request('search');
+        $labor=LaborModel::query()->where('l_type','LIKE',"%{$getsearch}%")->get();
+        return view('labor',compact('labor'));
     }
 
     /**
@@ -95,7 +97,7 @@ class LaborController extends Controller
         $labor=LaborModel::find($id);
 
         $validated = $request->validate([
-            'type' => 'required|min:2|max:255',
+            'type' => 'required|min:2|max:255|regex:/^[a-z A-Z]+$/',
             'rate' => 'required|min:3'
         ]);
 

@@ -333,7 +333,7 @@ body, button, input {
 
           <div class="app-form">
             <div class="app-form-group">
-            <input type="text"  id="name"  name="cust_name" class="app-form-control  @error('name') is-invalid @enderror"  placeholder="Name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+            <input type="text"  id="name" name="cust_name" class="app-form-control  @error('name') is-invalid @enderror"  placeholder="Name" value="{{ old('name') }}" required autocomplete="name" autofocus>
             @error('name')
                 <span class="invalid-feedback" role="alert">
                  <strong>{{ $message }}</strong>
@@ -361,7 +361,7 @@ body, button, input {
             <label class="lead" >Date of Birth</label>
             </div>
             <div class="app-form-group">
-            <input type="date"  name="dob" class="app-form-control @error('Phone') is-invalid @enderror" placeholder="dob" required>
+            <input type="date"  name="dob" max="2000-12-31" class="app-form-control @error('Phone') is-invalid @enderror" placeholder="dob" required>
             </div>
             <div class="app-form-group">
             <input id="password" type="password" name="password" class="app-form-control @error('password') is-invalid @enderror"  placeholder="Password" required autocomplete="new-password">

@@ -27,6 +27,12 @@ class MaterialController extends Controller
         return view('material',compact('materials'));
     }
 
+    public function search(Request $request)
+    {
+        $getsearch=request('search');
+        $materials=MaterialModel::query()->where('mat_name','LIKE',"%{$getsearch}%")->get();
+        return view('material',compact('materials'));
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -94,7 +100,7 @@ class MaterialController extends Controller
         $mat=MaterialModel::find($id);
 
         $validated = $request->validate([
-            'rate' => 'required|min:3'
+            'rate' => 'required|min:2'
         ]);
 
         $matn=request('matname');

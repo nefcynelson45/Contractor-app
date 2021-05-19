@@ -27,7 +27,12 @@ class ConstructionController extends Controller
         $const=ConstructionModel::all();
         return view('construction',compact('const'));
     }
-
+    public function search(Request $request)
+    {
+        $getsearch=request('search');
+        $const=ConstructionModel::query()->where('cons_type','LIKE',"%{$getsearch}%")->get();
+        return view('construction',compact('const'));
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -73,6 +78,7 @@ class ConstructionController extends Controller
         $cons=ConstructionModel::find($id);
         return view('editcons',compact('cons'));
     }
+    
     public function delete($id)
     {
         $cons=ConstructionModel::find($id);
