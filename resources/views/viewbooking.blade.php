@@ -197,7 +197,7 @@
             <td>{{optional($book->construction)->cons_type}}</td>
             <td>{{$book->status}}</td>
 
-            <form action="/fb/{{$book->id}}" method="post">
+            
             @csrf
             <td>
               @if($book->b_date < Carbon\Carbon::today())
@@ -205,10 +205,13 @@
                 <button class="btn btn-info">feedback</button>
                 </a>
               @else
-
+                @if($book->status == 'pending')
+                <a href="/bookdel/{{$book->id}}/delete">
+                <button class="btn btn-app-sm bg-danger" onclick="return confirm('Do You Really want to Delete?');">Delete</button>
+                </a>
+                @endif
               @endif
             </td>
-            </form>
         </tr>
         @endforeach
         </tbody>

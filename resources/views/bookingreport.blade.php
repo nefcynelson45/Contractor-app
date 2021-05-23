@@ -46,7 +46,7 @@
       
       <!-- /.col -->
       <div class="col-sm-4 invoice-col">
-        <b style="font-size:30px;">BOOKINGS REPORT</b><br>
+        <b style="font-size:30px;">BOOKING REPORTS</b><br>
         <br>
       </div>
       <!-- /.col -->
@@ -68,7 +68,6 @@
             <th>LABOR</th>
             <th>MATERIAL</th>
             <th>CONSTRUCTION</th>
-            <th></th>
         </tr>
       </thead>
       <tbody>

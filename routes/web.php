@@ -92,7 +92,7 @@ Route::get('/', function () {
 
     Route::get('/cust', [CustomerController::class,'create']); 
     Route::get('/booking', [BookingController::class,'create']);
-    Route::post('/fb/{id}', [FeedbackController::class,'create']);
+    Route::get('/fb/{id}', [FeedbackController::class,'create']);
     Route::post('/fbread/{id}',[FeedbackController::class,'store']);
     Route::post('/bookread',[BookingController::class,'store']);
         
@@ -102,6 +102,7 @@ Route::get('/', function () {
     
 
     Route::get('/viewbooking',[BookingController::class,'indexcust']);
+    Route::get('/bookdel/{id}/delete', [BookingController::class,'delete']);
     Route::get('/viewfb',[FeedbackController::class,'indexcust']);
 
     Route::get('/profile/{id}/edit', [CustomerController::class,'profile']); 

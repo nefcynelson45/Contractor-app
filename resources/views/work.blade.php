@@ -209,7 +209,7 @@
         <thead>
         <tr>
         <th>ID</th>
-        <th>CUSTOMER</th>
+        <th>CLIENT</th>
         <th>STATUS</th>
         <th>PHOTO</th>
         <th>COMPLETION DATE</th>
@@ -221,7 +221,7 @@
     <tr> 
     @if($w->status=='Upcoming')
         <td>{{$w->w_id}}</td> 
-        <td>{{optional($w->booking)->cust_id}}</td>
+        <td>{{optional($w->booking)->b_name}}</td>
         <td><span class="badge bg-primary">{{$w->status}}</span></td>
         <td>Upcoming</td>
         <td>Upcoming</td>        
@@ -236,7 +236,7 @@
 
     @elseif($w->status=='Completed')
         <td>{{$w->w_id}}</td>
-        <td>{{optional($w->booking)->cust_id}}</td>
+        <td>{{optional($w->booking)->b_name}}</td>
         <td><span class="badge bg-success">{{$w->status}}</span></td>
         <td><img src="{{ URL::asset('assets/img/works/'.$w->photo)}}" alt="Building" width="150" height="100"></td>
         <td>{{$w->Completion}}</td>

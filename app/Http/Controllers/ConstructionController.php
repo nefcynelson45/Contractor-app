@@ -43,7 +43,7 @@ class ConstructionController extends Controller
     {
 
         $validated = $request->validate([
-            'cons' => 'required|min:2|max:255'
+            'cons' => 'required|min:2|max:255|unique:construction_models,cons_type'
         ]);
 
         $cons=request('cons');
@@ -79,12 +79,12 @@ class ConstructionController extends Controller
         return view('editcons',compact('cons'));
     }
     
-    public function delete($id)
+    /*public function delete($id)
     {
         $cons=ConstructionModel::find($id);
         $cons->delete();
         echo "<script>alert('Construction Deleted Successfully !!');window.location='/addconst';</script>";
-    }
+    }*/
 
     /**
      * Update the specified resource in storage.

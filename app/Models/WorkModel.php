@@ -11,7 +11,7 @@ class WorkModel extends Model
 {
     use HasFactory;
     protected $primaryKey = 'w_id';
-    protected $fillable=['id','cust_id'];
+    protected $fillable=['id','cust_id','cust_name'];
     public function booking()
     {
         return $this->belongsTo(BookingModel::class,'id');

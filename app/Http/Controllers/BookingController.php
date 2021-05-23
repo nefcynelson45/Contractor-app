@@ -71,7 +71,14 @@ class BookingController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
+    public function delete($id)
+    {
+        $book=BookingModel::find($id);
+        $book->delete();
+        $data=['LoggedUserInfo'=>RegistrationModel::where('cust_id','=',session('LoggedUser'))->first()];
+        $booking=BookingModel::where('cust_id','=',session('LoggedUser'))->with('customer','construction')->get();
+        return view('viewbooking',$data,compact('booking'));
+    }
 
 
     public function store(Request $request)

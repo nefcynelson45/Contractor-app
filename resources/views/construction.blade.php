@@ -229,7 +229,6 @@
             <th> ID</th>
             <th>CONSTRUCTION</th>
             <th></th>
-            <th></th>
         </tr>
       </thead>
       <tbody class="table-active" >
@@ -239,8 +238,8 @@
             <td>{{$con->cons_type}}</td>
             <td><a href="/cons/{{$con->cons_id}}/edit" class="btn btn-app-sm bg-warning">
                   <i class="fas fa-edit"></i> Edit</a></td>
-            <td><a href="/cons/{{$con->cons_id}}/delete" onclick="return confirm('Do You Really want to Delete?');" class="btn btn-app-sm bg-danger">
-                  <i class="fas fa-trash"></i> Delete</a></td>
+            <!--<td><a href="/cons/{{$con->cons_id}}/delete" onclick="return confirm('Do You Really want to Delete?');" class="btn btn-app-sm bg-danger">
+                  <i class="fas fa-trash"></i> Delete</a></td> -->
         </tr>
         @endforeach
         </tbody>

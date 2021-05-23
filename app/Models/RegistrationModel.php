@@ -15,7 +15,7 @@ class RegistrationModel extends Model
     protected $fillable=['cust_id','cust_name','email'];
     public function work()
     {
-        return $this->hasOne(WorkModel::class,'cust_id');
+        return $this->hasMany(WorkModel::class,'cust_id');
     }
     public function booking()
     {
