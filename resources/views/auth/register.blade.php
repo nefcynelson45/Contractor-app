@@ -165,7 +165,6 @@ body, button, input {
   border-bottom: 1px solid #666;
   color: #ddd;
   font-size: 14px;
-  text-transform: uppercase;
   outline: none;
   transition: border-color .3s;
 }
