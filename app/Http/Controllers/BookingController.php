@@ -18,7 +18,7 @@ class BookingController extends Controller
      */
     public function index()
     {
-        $bookings=BookingModel::with('customer','construction')->orderBy('id','desc')->get();
+        $bookings=BookingModel::sortable()->with('customer','construction')->orderBy('id','desc')->paginate(10);
         return view('viewallbookings',compact('bookings'));
 
   
@@ -26,7 +26,7 @@ class BookingController extends Controller
     public function bsearch(Request $request)
     {
         $getsearch=request('search');
-        $bookings=BookingModel::query()->where('b_name','LIKE',"%{$getsearch}%")->with('customer','construction')->orderBy('id','desc')->get();
+        $bookings=BookingModel::query()->sortable()->where('b_name','LIKE',"%{$getsearch}%")->with('customer','construction')->orderBy('id','desc')->paginate(50);
         return view('viewallbookings',compact('bookings'));
     }
 

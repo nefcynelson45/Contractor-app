@@ -226,6 +226,7 @@
 
         </tbody>
         </table>
+        {!! $customers->appends(\Request::except('page'))->render() !!}
         </div>
               <!-- /.card-body -->
             </div>

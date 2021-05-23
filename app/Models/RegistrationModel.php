@@ -7,12 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\BookingModel;
 use App\Models\WorkModel;
 use App\Models\FeedbackModel;
+use Kyslik\ColumnSortable\Sortable;
 
 class RegistrationModel extends Model
 {
     use HasFactory;
+    use Sortable;
     protected $primaryKey = 'cust_id';
     protected $fillable=['cust_id','cust_name','email'];
+    public $sortable = ['cust_id','cust_name','email'];
     public function work()
     {
         return $this->hasMany(WorkModel::class,'cust_id');

@@ -16,15 +16,16 @@ class RegistrationController extends Controller
      */
     public function index()
     {
-        $customers=RegistrationModel::where('cust_id','!=',1)->get();
+        //$customer=RegistrationModel::where('cust_id','!=',1)->get();
+        $customers=RegistrationModel::sortable()->where('cust_id','!=',1)->paginate(10);
         return view('viewallcustomers',compact('customers'));
     }
 
     public function search(Request $request)
     {
         $getsearch=request('search');
-        $customers=RegistrationModel::query()->where('cust_name','LIKE',"%{$getsearch}%")
-                                                ->where('cust_id','!=',1)->get();
+        $customers=RegistrationModel::query()->sortable()->where('cust_name','LIKE',"%{$getsearch}%")
+                                                ->where('cust_id','!=',1)->orderBy('cust_name','asc')->paginate(50);
         return view('viewallcustomers',compact('customers'));
     }
     /**

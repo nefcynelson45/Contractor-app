@@ -272,6 +272,7 @@
         @endforeach
         </tbody>
         </table>
+        {!! $bookings->appends(\Request::except('page'))->render() !!}
         </div>
 
               <!-- /.card-body -->
