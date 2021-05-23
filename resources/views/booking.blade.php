@@ -9,6 +9,15 @@
   * sidebar-collapse
   * sidebar-mini
 -->
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
 <div class="wrapper">
   <!-- Navbar -->
@@ -69,7 +78,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="/profile/{{$LoggedUserInfo['cust_id']}}/edit" class="d-block">{{$LoggedUserInfo['cust_name']}}</a>

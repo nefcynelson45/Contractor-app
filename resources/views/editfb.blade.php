@@ -37,9 +37,6 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="/cust" class="nav-link">Home</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
     </ul>
 
     <!-- Right navbar links -->
@@ -165,7 +162,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Feedback</h1><blockquote><font face="Lato">"We all need people who will give us feedback. That's how we improve."</font><br>-<i> Bill Gates</i></blockquote>
+            <h1 class="m-0">Update Feedback</h1><blockquote><font face="Lato">"We all need people who will give us feedback. That's how we improve."</font><br>-<i> Bill Gates</i></blockquote>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -197,7 +194,7 @@
     </td></tr>
         <tr>
         
-            <td><center><textarea name="feedback" id="" cols="30" rows="10" value="{{$fb->feedback}}" class="form-control" style="max-width:50%;" placeholder="Enter your Feedback here" required></textarea></center></td>
+            <td><center><textarea name="feedback" id="" cols="30" rows="10" value="{{$fb->feedback}}" class="form-control" style="max-width:50%;" placeholder="Enter your Feedback here" required>{{$fb->feedback}}</textarea></center></td>
         </tr>
     </table>
     <center><button class="btn btn-primary">Update Feedback</button></center></form>

@@ -85,7 +85,7 @@
 
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-            <img src="assets/img/about.jpg" class="img-fluid" alt="">
+            <img src="/assets/img/about.jpg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
             <h3>Welcome to Davidson's General Contractors.</h3>
@@ -114,14 +114,14 @@
 
         <div class="clients-slider swiper-container">
           <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide"><img src="assets/img/clients/client-1.png" class="img-fluid" height="300" width="333" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-2.png" class="img-fluid" height="300" width="333"alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-3.png" class="img-fluid" height="300" width="333" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-4.png" class="img-fluid" height="300" width="333" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-5.png" class="img-fluid" height="300" width="333" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-6.png" class="img-fluid" height="300" width="333" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-7.png" class="img-fluid" height="300" width="333" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-8.png" class="img-fluid" height="300" width="333" alt=""></div>
+            <div class="swiper-slide"><img src="/assets/img/clients/client-1.png" class="img-fluid" height="300" width="333" alt=""></div>
+            <div class="swiper-slide"><img src="/assets/img/clients/client-2.png" class="img-fluid" height="300" width="333"alt=""></div>
+            <div class="swiper-slide"><img src="/assets/img/clients/client-3.png" class="img-fluid" height="300" width="333" alt=""></div>
+            <div class="swiper-slide"><img src="/assets/img/clients/client-4.png" class="img-fluid" height="300" width="333" alt=""></div>
+            <div class="swiper-slide"><img src="/assets/img/clients/client-5.png" class="img-fluid" height="300" width="333" alt=""></div>
+            <div class="swiper-slide"><img src="/assets/img/clients/client-6.png" class="img-fluid" height="300" width="333" alt=""></div>
+            <div class="swiper-slide"><img src="/assets/img/clients/client-7.png" class="img-fluid" height="300" width="333" alt=""></div>
+            <div class="swiper-slide"><img src="/assets/img/clients/client-8.png" class="img-fluid" height="300" width="333" alt=""></div>
           </div>
           <div class="swiper-pagination"></div>
         </div>
@@ -134,7 +134,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="row">
-          <div class="image col-lg-6" style='background-image: url("assets/img/features.jpg");' data-aos="fade-right"></div>
+          <div class="image col-lg-6" style='background-image: url("/assets/img/features.jpg");' data-aos="fade-right"></div>
           <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
             <div class="icon-box mt-5 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
               <i class="bx bx-receipt"></i>
@@ -180,7 +180,7 @@
         <div class="row">
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
-              <div class="img"><img src="assets/img/res.jpg" alt="" class="img-fluid"></div>
+              <div class="img"><img src="/assets/img/res.jpg" alt="residential.jpg" class="img-fluid"></div>
               <h4><a href="">Residential</a></h4>
               <p>Davidson's GC. specializes in constructing homes on newly acquired land.
                  We'll work directly with you to plan, design, and construct your new house! 
@@ -190,7 +190,7 @@
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
-            <div class="img"><img src="assets/img/commercial.jpg" alt="" class="img-fluid"></div>
+            <div class="img"><img src="/assets/img/commercial.jpg" alt="commercial.jpg" class="img-fluid"></div>
               <h4><a href="">Commercial</a></h4>
               <p>Interested in relocating your business' headquarters? Sitting on valuable real estate?
                  Work with us to build a state-of-the-art business center. 
@@ -200,7 +200,7 @@
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon-box">
-            <div class="img"><img src="assets/img/remodel.jpg" alt="" class="img-fluid"></div>
+            <div class="img"><img src="/assets/img/remodel.jpg" alt="remodel.jpg" class="img-fluid"></div>
               <h4><a href="">Remodeling Services</a></h4>
               <p>Want to make changes to your existing structure? We can help you redesign your kitchen, 
                 living room, bathroom and more! From additions to complete renovations, we can do it all.</p>
@@ -209,7 +209,7 @@
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
-            <div class="img"><img src="assets/img/townhouse.jpg" alt="" class="img-fluid"></div>
+            <div class="img"><img src="/assets/img/townhouse.jpg" alt="townhouse.jpg" class="img-fluid"></div>
               <h4><a href="">Town House & Unit Developments</a></h4>
               <p>In modern world, times are changing and new developments are continuously raising the bar. 
                 At Davidson's GC, we understand this & it shows with our townhouse & unit developments. 
@@ -220,7 +220,7 @@
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
-            <div class="img"><img src="assets/img/kr.jpg" alt="" class="img-fluid"></div>
+            <div class="img"><img src="/assets/img/kr.jpg" alt="Knockdown.jpg" class="img-fluid"></div>
               <h4><a href="">Knockdown Rebuilds</a></h4>
               <p>Do you love the location of your current home but want to take your living experience to the next level?
                  Here at Davidson's GC,
@@ -230,7 +230,7 @@
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon-box">
-            <div class="img"><img src="assets/img/est.jpg" alt="" class="img-fluid"></div>
+            <div class="img"><img src="/assets/img/est.jpg" alt="Estimation.jpg" class="img-fluid"></div>
               <h4><a href="">Budgeting, Estimating & Cost Control</a></h4>
               <p>Along with our selective hiring of estimating and MEPS specialty talent - 
                 all ensure our clients the most accurate and reliable budget estimating and bid pricing.</p>
@@ -270,7 +270,7 @@
           @foreach($work as $pic)
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
-              <img src="{{ URL::asset('assets/img/works/'.$pic->photo)}}" class="img-fluid" alt="">
+              <img src="{{ URL::asset('/assets/img/works/'.$pic->photo)}}" class="img-fluid" alt="Work.jpg">
             </div>
           </div>
         @endforeach
@@ -324,7 +324,7 @@
           <div class="col-lg-8 mt-5 mt-lg-0">
 
           <div class="col-lg-12" data-aos="fade-right" data-aos-delay="100">
-            <img src="assets/img/contact.jpg" class="img-fluid" alt="">
+            <img src="/assets/img/contact.jpg" class="img-fluid" alt="Contact.jpg">
           </div>
           </div>
 
