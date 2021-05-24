@@ -172,7 +172,7 @@ margin-left: 4px;
 			</div>
 	<div class="card-body text-white">
       <form action="{{route('auth.log')}}" method="post">
-      @csrf
+      {{csrf_field()}}
 
       @if(Session::get('success'))
           <div class="alert alert-success">
