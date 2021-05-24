@@ -33,7 +33,7 @@ Route::get('/', function () {
     //Auth::routes();
     Route::auth();
 
-    Route::post('/auth/loginread',[LoginController::class,'login'])->name('auth.log');
+    Route::post('/auth/loginread','LoginController@login')->name('auth.log');
     Route::post('/auth/customerread',[LoginController::class,'reg'])->name('auth.regist');  
     Route::get('/auth/logout',[LoginController::class,'logout'])->name('auth.logout'); 
 
