@@ -109,7 +109,7 @@ Route::get('/', function () {
     Route::post('/profileeditprocess/{id}',[CustomerController::class,'profileupdate']);
 
 
-    Route::middleware(['AuthCheck'])->group(function () { 
+  /*  Route::middleware(['AuthCheck'])->group(function () { 
 
 
 });
@@ -118,5 +118,5 @@ Route::middleware(['CustCheck'])->group(function () {
 
 
     
-});
+});*/
 
