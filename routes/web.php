@@ -39,7 +39,7 @@ Route::get('/', function () {
 
 
     //admin
- //Route::middleware(['AuthCheck'])->group(function () { 
+ Route::middleware(['AuthCheck'])->group(function () { 
 
     Route::get('/auth/login',[LoginController::class,'create'])->name('auth.login');
     Route::get('/auth/reg', [LoginController::class,'create1'])->name('auth.register');
@@ -89,10 +89,10 @@ Route::get('/', function () {
     Route::get('/creport',[CustomerController::class,'print']);
 
 
-//});
+});
 
 //Customer
-//Route::middleware(['CustCheck'])->group(function () { 
+Route::middleware(['CustCheck'])->group(function () { 
 
     Route::get('/auth/login',[LoginController::class,'create'])->name('auth.login');
     Route::get('/auth/reg', [LoginController::class,'create1'])->name('auth.register');
@@ -116,5 +116,5 @@ Route::get('/', function () {
     Route::post('/profileeditprocess/{id}',[CustomerController::class,'profileupdate']);
 
     
-//});
+});
 
