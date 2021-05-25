@@ -155,13 +155,13 @@ public function reg(Request $request)
         //
     }
 
-    function logout( ) {
+    /*function logout( ) {
 
         if(session()->has('LoggedUser')){
             session()->pull('LoggedUser');
             echo "<script>alert('Logged Out Successfully !');window.location='/auth/login';</script>";
         }
-    }
+    }*/
     /**
      * Show the form for editing the specified resource.
      *

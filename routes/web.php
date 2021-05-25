@@ -35,11 +35,17 @@ Route::get('/', function () {
 
     Route::post('/loginread',[LoginController::class,'login']);
     Route::post('auth/customerread',[LoginController::class,'reg'])->name('auth.regist');  
-    Route::get('auth/logout',[LoginController::class,'logout'])->name('auth.logout'); 
+    //Route::get('auth/logout',[LoginController::class,'logout'])->name('auth.logout'); 
 
+    Route::get('auth/logout',function(){
+        if(session()->has('LoggedUser')){
+            session()->pull('LoggedUser');
+        }
+        echo "<script>alert('Logged Out Successfully !');window.location='/auth/login';</script>";
+    })->name('auth.logout');
 
     //admin
- //Route::middleware(['AuthCheck'])->group(function () { 
+ //Route::group(['middleware'=>['AuthCheck']], function () { 
 
     Route::get('/auth/login',[LoginController::class,'create'])->name('auth.login');
     Route::get('/auth/reg', [LoginController::class,'create1'])->name('auth.register');
@@ -94,8 +100,8 @@ Route::get('/', function () {
 //Customer
 //Route::middleware(['CustCheck'])->group(function () { 
 
-    Route::get('/auth/login',[LoginController::class,'create'])->name('auth.login');
-    Route::get('/auth/reg', [LoginController::class,'create1'])->name('auth.register');
+    //Route::get('/auth/login',[LoginController::class,'create'])->name('auth.login');
+    //Route::get('/auth/reg', [LoginController::class,'create1'])->name('auth.register');
 
     Route::get('/cust', [CustomerController::class,'create']); 
     Route::get('/booking', [BookingController::class,'create']);
