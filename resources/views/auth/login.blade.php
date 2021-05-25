@@ -171,7 +171,7 @@ margin-left: 4px;
 				</div>
 			</div>
 	<div class="card-body text-white">
-      <form action="{{route('auth.log')}}" method="post">
+      <form action="/loginread" method="post">
       {{csrf_field()}}
 
       @if(Session::get('success'))
