@@ -182,7 +182,8 @@
           <div class="col-12">
             <div class="card">
               <!-- /.card-header -->
-              <div class="card-body responsive">
+              <div class="card-body">
+              <div class="table-responsive">
         <table class="table table-stripped table-hover">
         <thead>
         <tr class="card-body">
@@ -210,7 +211,7 @@
         </tr>
         @endforeach
         </tbody>
-        </table>
+        </table></div>
         </div>
               <!-- /.card-body -->
             </div>

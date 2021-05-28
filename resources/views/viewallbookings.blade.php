@@ -220,12 +220,12 @@
           <div class="col-12">
             <div class="card">
             <div class="card-header d-flex flex-row-reverse">
-        <a href="/breport" rel="noopener" target="_blank" class="btn btn-default" style="max-width:7%;"><i class="fas fa-print"></i> Print</a>
+        <a href="/breport" rel="noopener" target="_blank" class="btn btn-default btn-responsive" style="max-width:7%;"><i class="fas fa-print"></i> Print</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-
-        <table class="table table-bordered table-hover table-responsive">
+              <div class="table-responsive">
+        <table class="table table-bordered table-hover">
         <thead>
         <tr>
             <th>ID</th>
@@ -271,7 +271,7 @@
 
         @endforeach
         </tbody>
-        </table>
+        </table></div>
         {!! $bookings->appends(\Request::except('page'))->render() !!}
         </div>
 

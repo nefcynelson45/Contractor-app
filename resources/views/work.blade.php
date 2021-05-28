@@ -203,9 +203,9 @@
           <div class="col-12">
             <div class="card">
               <!-- /.card-header -->
-              <div class="card-body responsive">
-
-        <table class="table table-hover ">
+              <div class="card-body">
+              <div class="table-responsive">
+        <table class="table table-hover">
         <thead>
         <tr>
         <th>ID</th>
@@ -246,7 +246,7 @@
       
     @endforeach
     </tbody>
-        </table>
+        </table></div>
         </div>
               <!-- /.card-body -->
             </div>
