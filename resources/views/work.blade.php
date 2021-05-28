@@ -203,9 +203,9 @@
           <div class="col-12">
             <div class="card">
               <!-- /.card-header -->
-              <div class="card-body">
+              <div class="card-body responsive">
 
-        <table class="table table-hover">
+        <table class="table table-hover ">
         <thead>
         <tr>
         <th>ID</th>

@@ -167,7 +167,7 @@
             <div class="card">
               <!-- /.card-header -->
               <div class="card-body">
-        <table class="table table-stripped table-hover">
+        <table class="table table-stripped table-hover table-responsive">
         <thead>
         <tr class="card-body">
             <th>ID</th>

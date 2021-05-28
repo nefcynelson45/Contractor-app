@@ -182,7 +182,7 @@
           <div class="col-12">
             <div class="card">
               <!-- /.card-header -->
-              <div class="card-body">
+              <div class="card-body responsive">
         <table class="table table-stripped table-hover">
         <thead>
         <tr class="card-body">
