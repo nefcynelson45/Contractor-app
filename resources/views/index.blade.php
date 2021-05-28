@@ -268,11 +268,13 @@
         
         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
           @foreach($work as $pic)
+          @if($pic->status == 'Completed')
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
               <img src="{{ URL::asset('/assets/img/works/'.$pic->photo)}}" class="img-fluid" alt="Work.jpg">
             </div>
           </div>
+          @endif
         @endforeach
         </div>
 
