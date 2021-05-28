@@ -220,7 +220,7 @@
           <div class="col-12">
             <div class="card">
             <div class="card-header d-flex flex-row-reverse">
-        <a href="/breport" rel="noopener" target="_blank" class="btn btn-default btn-responsive" style="max-width:7%;"><i class="fas fa-print"></i> Print</a>
+        <a href="/breport" rel="noopener" target="_blank" class="btn btn-default col-md-4 col-lg-2" style="max-width:7%;"><i class="fas fa-print"></i> Print</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
