@@ -231,7 +231,7 @@ class BookingController extends Controller
             $book->save();
             $work->save();
 
-            $bookings=BookingModel::with('customer','construction')->orderBy('id','desc')->get();
+            $bookings=BookingModel::sortable()->with('customer','construction')->orderBy('id','desc')->paginate(10);
             return view('viewallbookings',compact('bookings'));
        
     }
@@ -242,8 +242,8 @@ class BookingController extends Controller
             $book->status='Rejected';
             $book->save();
             
-            $bookings=BookingModel::with('customer','construction')->orderBy('id','desc')->get();
-            return view('viewallbookings',compact('bookings'));
+            $bookings=BookingModel::sortable()->with('customer','construction')->orderBy('id','desc')->paginate(10);
+        return view('viewallbookings',compact('bookings'));
    
     }
 }
