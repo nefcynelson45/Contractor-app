@@ -238,7 +238,7 @@
         <td>{{$w->w_id}}</td>
         <td>{{optional($w->booking)->b_name}}</td>
         <td><span class="badge bg-success">{{$w->status}}</span></td>
-        <td><img src="{{ URL::asset('assets/img/works/'.$w->photo)}}" alt="Building" width="150" height="100"></td>
+        <td><img src="{{ URL::asset('/assets/img/works/'.$w->photo)}}" alt="Building" width="150" height="100"></td>
         <td>{{$w->Completion}}</td>
         <td></td>
       @endif
