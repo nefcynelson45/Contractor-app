@@ -153,7 +153,7 @@ class BookingController extends Controller
         $cdate=request('cdate');
         $name=$photo->getClientOriginalName($photo);
 
-        $photo->move(public_path('/assets/img/works'),$name);
+        $photo->move(public_path('/assets/img/works/'),$name);
    
         
         $work->id=$bookid;
