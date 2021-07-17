@@ -152,7 +152,7 @@ class BookingController extends Controller
         $photo=$request->file('wimg');
         $name=time().'.'.$photo->getClientOriginalExtension();
 
-        $path=$photo->move(public_path('/assets/img/works'),$name);
+        $path=$photo->move(public_path('/assets/img/works/'),$name);
    
         $cdate=request('cdate');
         

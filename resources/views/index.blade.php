@@ -271,7 +271,7 @@
           @if($pic->status == 'Completed')
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
-              <img src="{{ URL::asset('/assets/img/works'.$pic->photo)}}" class="img-fluid" alt="Work.jpg">
+              <img src="{{ URL::asset('/assets/img/works/'.$pic->photo)}}" class="img-fluid" alt="Work.jpg">
             </div>
           </div>
           @endif
