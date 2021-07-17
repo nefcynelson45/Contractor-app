@@ -204,8 +204,9 @@
           </span>
           
           <center><a href="/booking" class="btn btn-block bg-gradient-warning btn-lg"  style="max-width:200px;">Book Appointment</a></center><br>
-            
-            
+
+
+
             <!-- /.col-md-6 -->
             <section id="lm" >
         <div class="row" id="">

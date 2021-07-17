@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\LoginModel;
 use App\Models\RegistrationModel;
 use App\Models\MaterialModel;
+use App\Models\BookingModel;
 use App\Models\LaborModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;

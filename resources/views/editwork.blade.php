@@ -231,7 +231,7 @@
                         <label for="exampleInputFile">Photo Upload</label>
                         <div class="input-group">
                           <div class="custom-file">
-                            <input type="file" name="wimg" class="custom-file-input" id="exampleInputFile">
+                            <input type="file" name="wimg" class="custom-file-input" onchange="this.value" id="exampleInputFile" required>
                             <label class="custom-file-label" for="exampleInputFile">Choose photo</label>
                           </div>
                         </div>

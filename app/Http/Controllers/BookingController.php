@@ -130,14 +130,18 @@ class BookingController extends Controller
     public function workupdate(Request $request, $id)
     {
         $validated = $request->validate([
-            'cdate' => 'required|'
+            'cdate' => 'required'
 
         ]);
         $work=WorkModel::find($id);
         if ($request->hasFile('wimg')) 
         {
             $request->validate([
+<<<<<<< HEAD
                 'image' => 'mimes:jpeg,jpg,bmp,png' // Only allow .jpg, .bmp and .png file types.
+=======
+                'wimg' => 'mimes:jpeg,jpg,bmp,png' // Only allow .jpg, .bmp and .png file types.
+>>>>>>> 8a0b8c1 (final commit)
             ]);
         }
 
@@ -150,11 +154,15 @@ class BookingController extends Controller
             
         $status=request('stat');
         $photo=$request->file('wimg');
-        $cdate=request('cdate');
-        $name=$photo->getClientOriginalName($photo);
+        $name=time().'.'.$photo->getClientOriginalExtension();
 
+<<<<<<< HEAD
         $photo->move(public_path('/assets/img/works'),$name);
+=======
+        $path=$photo->move(public_path('/assets/works/img'),$name);
+>>>>>>> 8a0b8c1 (final commit)
    
+        $cdate=request('cdate');
         
         $work->id=$bookid;
         $work->status=$status;
