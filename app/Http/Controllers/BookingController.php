@@ -137,11 +137,7 @@ class BookingController extends Controller
         if ($request->hasFile('wimg')) 
         {
             $request->validate([
-<<<<<<< HEAD
                 'image' => 'mimes:jpeg,jpg,bmp,png' // Only allow .jpg, .bmp and .png file types.
-=======
-                'wimg' => 'mimes:jpeg,jpg,bmp,png' // Only allow .jpg, .bmp and .png file types.
->>>>>>> 8a0b8c1 (final commit)
             ]);
         }
 
@@ -156,11 +152,7 @@ class BookingController extends Controller
         $photo=$request->file('wimg');
         $name=time().'.'.$photo->getClientOriginalExtension();
 
-<<<<<<< HEAD
-        $photo->move(public_path('/assets/img/works'),$name);
-=======
-        $path=$photo->move(public_path('/assets/works/img'),$name);
->>>>>>> 8a0b8c1 (final commit)
+        $path=$photo->move(public_path('/assets/img/works'),$name);
    
         $cdate=request('cdate');
         
