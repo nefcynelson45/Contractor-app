@@ -32,8 +32,11 @@ class CustomerController extends Controller
         //$id = $request->session()->get('l_id');
         //return view('admin',compact('id'));
         $mat=MaterialModel::all();
+        $bid=BookingModel::whereDate('b_date','>',today())
+                            ->where('status','=','Booking Confirmed')->get();
+        
         $data=['LoggedUserInfo'=>LoginModel::where('login_id','=',session('LoggedUser'))->first()];
-        return view('admin',compact('data','mat'));
+        return view('admin',compact('data','mat','bid'));
     }
 
     function create(Request $request)
@@ -42,8 +45,11 @@ class CustomerController extends Controller
         //return view('cust',compact('id'));
         $mat=MaterialModel::all();
         $labor=LaborModel::all();
-        $data=['LoggedUserInfo'=>RegistrationModel::where('cust_id','=',session('LoggedUser'))->first()];
-        return view('cust',$data,compact('mat','labor'));
+        //$val=BookingModel::where('cust_id','=',session('LoggedUser'))->first();
+            $bid=BookingModel::where('cust_id','=',session('LoggedUser'))->orderBy('id','desc')->first();
+            $data=['LoggedUserInfo'=>RegistrationModel::where('cust_id','=',session('LoggedUser'))->first()];
+            return view('cust',$data,compact('mat','labor','bid'));
+
     }
 
     function profile(Request $request,$id)
@@ -90,8 +96,9 @@ class CustomerController extends Controller
             echo "<script>alert('Profile Updated Successfully !!');</script>";
             $mat=MaterialModel::all();
             $labor=LaborModel::all();
+            $bid=BookingModel::where('cust_id','=',session('LoggedUser'))->orderBy('id','desc')->first();
             $data=['LoggedUserInfo'=>RegistrationModel::where('cust_id','=',session('LoggedUser'))->first()];
-            return view('cust',$data,compact('mat','labor'));
+            return view('cust',$data,compact('mat','labor','bid'));
         }
 
     }

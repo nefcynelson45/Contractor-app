@@ -166,6 +166,77 @@
               <div class="container-fluid">
               <div class="card-body">
               <div class="card" style="padding:20px;">
+             @if($bid==NULL)
+
+             @else
+              @if($bid->b_date > Carbon\Carbon::today())
+              @if($bid->status=="Rejected")
+              
+
+              
+              <button type="button" class="btn bg-primary btn-sm" data-toggle="modal" data-target="#modal-default" style="max-width:140px;">
+                  Appointment Status
+                </button><br>
+      <div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Dear {{$LoggedUserInfo['cust_name']}}, </h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>We're really sorry to let you know that due to some unforseen circumstances we are forced to <b>not accept the appointment</b> <br>on {{$bid->b_date}} . <br>
+                We know how valuable your time is and we want to apologize for the conflict and any inconvenience this may cause.<br>
+              <b>Kindly choose another date for the appointment.</b></p>
+                If you have any concerns, please don't hesitate to get in touch with us 
+                <i class="fa fa-phone"></i> &nbsp; 9287807568 <br><i class="fa fa-envelope"></i> &nbsp; davidsongc54@example.com 
+                <br>
+                Looking forward to meeting you &hellip;
+              <br><br>Regards
+            <br><b>Davidson's General Contractors</b>
+                
+            </div>
+            <div class="modal-footer justify-content-between">
+            <a href="/booking" ><button class="btn btn-primary">Book Appointment</button></a>
+              <button type="button" class="btn btn-default bg-danger" data-dismiss="modal">Close</button>
+            </div>
+          </div></div></div>
+
+              @elseif($bid->status=="Booking Confirmed")
+
+              <button type="button" class="btn bg-primary btn-sm" data-toggle="modal" data-target="#modal-default" style="max-width:140px;">
+                  Appointment Status
+                </button><br>
+      <div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Dear {{$LoggedUserInfo['cust_name']}}, </h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Thanks for Choosing Davidson's GC. <br>We're glad to let you know that Your Appointment has confirmed on {{$bid->b_date}} .
+                We'll contact you for further details.<br></p>
+                If you have any concerns, please don't hesitate to get in touch with us <i class="fa fa-phone"></i> &nbsp; 9287807568 <br><i class="fa fa-envelope"></i> &nbsp; davidsongc54@example.com 
+                <br>
+                Looking forward to meeting you there&hellip;
+              <br><br>Regards
+            <br><b>Davidson's General Contractors</b>
+                
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default bg-danger" data-dismiss="modal">Close</button>
+            </div>
+          </div></div></div>
+          @endif
+          @endif
+          @endif
+         
+          
               <div class="card card-success">
               <div class="row">
               
@@ -203,10 +274,8 @@
               <br><br>Looking to build a new home? You can make an appointment with us today !</h6></p>
           </span>
           
-          <center><a href="/booking" class="btn btn-block bg-gradient-warning btn-lg"  style="max-width:200px;">Book Appointment</a></center><br>
-
-
-
+          <center><a href="/booking" class="btn btn-block bg-gradient-warning btn-lg"  style="max-width:200px;">Book Appointment</a>
+          </center><br>
             <!-- /.col-md-6 -->
             <section id="lm" >
         <div class="row" id="">

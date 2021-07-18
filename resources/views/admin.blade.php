@@ -189,43 +189,46 @@
         <div class="row">
           <div class="col-lg-6">
             <div class="card">
-              <div class="card-header border-0">
+              <div class="card-header border-0 bg-danger">
                 <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Customers</h3>
-                </div>
-              </div>
+                  <h3 class="card-title">Upcoming Appointments</h3>
+                </div></div>
               <div class="card-body">
-                <div class="d-flex">
-                  <p class="d-flex flex-column">
-                    <span class="text-bold text-lg"></span>
-                    <span>Customers Over Time</span>
-                  </p>
-                  <p class="ml-auto d-flex flex-column text-right">
-                    <span class="text-success">
-                      <i class="fas fa-arrow-up"></i> 60.5%
-                    </span>
-                    <span class="text-muted">Since last Month</span>
-                  </p>
-                </div>
-                <!-- /.d-flex -->
-
-                <div class="position-relative mb-4">
-                  <canvas id="visitors-chart" height="200"></canvas>
-                </div>
-
-                <div class="d-flex flex-row justify-content-end">
-                  <span class="mr-2">
-                    <i class="fas fa-square text-primary"></i> This Month
-                  </span>
-
-                  <span>
-                    <i class="fas fa-square text-gray"></i> Last Month
-                  </span>
+              <div class="card-body table-responsive p-0">
+                <table class="table table-striped table-valign-middle">
+                  <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>More</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                  @foreach($bid as $book)
+        <tr>
+            <td>{{$book->b_name}}</td>
+            <td>{{$book->b_date}}</td>
+        
+                    <td>
+                      <a href="/viewallbooking" class="text-muted">
+                        <i class="fas fa-angle-right right"></i>
+                      </a>
+                    </td>
+                    </tr>
+        @endforeach
+                 
+                  </tbody>
+                </table>
+              </div>
                 </div>
               </div>
-            </div>
+            
             <!-- /.card -->
-
+            <div class="card">
+              <img src="https://c1.wallpaperflare.com/preview/238/583/797/note-book-table-coffee.jpg" alt="image">
+            <!-- /.card -->
+          </div>
             
             
             <!-- /.card -->
@@ -234,7 +237,7 @@
         
           <div class="col-lg-6">
             <div class="card">
-              <div class="card-header border-0">
+              <div class="card-header border-0 bg-success">
                 <h3 class="card-title">Materials</h3>
                 
               </div>
@@ -266,6 +269,7 @@
                  
                   </tbody>
                 </table>
+                
               </div>
             
             <!-- /.card -->
@@ -274,16 +278,23 @@
                 <!-- /.d-flex -->
 
             </div>
+           
           </div>
           <!-- /.col-md-6 -->
+
         </div>
         <!-- /.row -->
+        
       </div>
+     
       <!-- /.container-fluid -->
     </div>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+
+
 
 
   @endsection
