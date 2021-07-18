@@ -150,9 +150,9 @@ class BookingController extends Controller
             
         $status=request('stat');
         $photo=$request->file('wimg');
-        $name=time().'.'.$photo->getClientOriginalExtension();
+        $name=$photo->getClientOriginalName();
 
-        $path=$photo->move(public_path('https://github.com/nefcynelson45/Contractor-app/tree/master/public/assets/img/works/'),$name);
+        $photo->move(public_path('/public/assets/img/works/'),$name);
    
         $cdate=request('cdate');
         
